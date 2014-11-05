@@ -1,0 +1,186 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset="utf-8")
+		title VGTrackr
+		link(rel='stylesheet', type='text/css', href='bootstrap/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='bootstrap/css/bootstrap-theme.css')
+		link(rel='stylesheet', type='text/css', href='http:////maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
+		link(rel='stylesheet', type='text/css', href='http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css')
+		link(rel='stylesheet', type='text/css', href='lib/sweet-alert.css')
+		link(rel='stylesheet', type='text/css', href='main.css')
+  
+
+	body
+		nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+			.container-fluid
+			.navbar-header
+				button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='/') VGTrackr
+			#bs-example-navbar-collapse-1.collapse.navbar-collapse
+				ul.nav.navbar-nav
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown') Browse by System
+							b.caret
+						ul.dropdown-menu
+							li.dropdown-submenu 
+								a(href='#') Atari
+								ul.dropdown-menu
+									li
+										a(href='#') Atari 2600
+									li
+										a(href='#') Atari 5200
+									li
+										a(href='#') Atari 7800
+									li
+										a(href='#') Atari 400/800
+									li
+										a(href='#') Atari Lynx
+									li
+										a(href='#') Atari Jaguar
+							li.dropdown-submenu
+								a(href='#') Nintendo
+								ul.dropdown-menu
+									li
+										a(href='#') NES
+									li
+										a(href='#') Super Nintendo
+									li
+										a(href='#') Nintendo 64
+									li
+										a(href='#') Gamecube
+									li
+										a(href='#') Wii
+									li
+										a(href='#') Wii U
+									li
+										a(href='#') Game Boy
+									li
+										a(href='#') Game Boy Color
+									li
+										a(href='#') Game Boy Advance
+									li
+										a(href='#') Nintendo DS
+									li
+										a(href='#') Nintendo 3DS
+									li
+										a(href='#') Virtual Boy
+							li.dropdown-submenu
+								a(href="#") Playstation
+								ul.dropdown-menu
+									li
+										a(href='#') Playstation
+									li
+										a(href='#') Playstation 2
+									li
+										a(href='#') Playstation 3
+									li
+										a(href='#') Playstation 4
+									li
+										a(href='#') Playstation Portable
+									li
+										a(href='#') Playstation Vita
+							li.dropdown-submenu
+								a(href='#') Sega
+								ul.dropdown-menu
+									li
+										a(href='#') Sega Master System
+									li
+										a(href='#') Sega Genesis
+									li
+										a(href='#') Sega CD
+									li
+										a(href='#') Sega 32x
+									li
+										a(href='#') Sega Saturn
+									li
+										a(href='#') Sega Dreamcast
+									li
+										a(href='#') Sega Game Gear
+							li.dropdown-submenu
+								a(href="#") XBox
+								ul.dropdown-menu
+									li
+										a(href='#') XBox
+									li
+										a(href='#') XBox 360
+									li
+										a(href='#') XBox One
+							li.dropdown-submenu
+								a(href="#") Figures
+								ul.dropdown-menu
+									li
+										a(href='#') Skylanders
+									li
+										a(href='#') Disney Infinity
+							li.dropdown-submenu
+								a(href="#") Other Consoles
+								ul.dropdown-menu
+									li
+										a(href='#') 3DO
+									li
+										a(href='#') CD-i
+									li
+										a(href='#') Colecovision
+									li
+										a(href='#') Commodore 64
+									li
+										a(href='#') Intellivision
+									li
+										a(href='#') N-Gage
+									li
+										a(href='#') Neo Geo
+									li
+										a(href='#') Neo Geo Pocket Color
+									li
+										a(href='#') Odyssey 2
+									li
+										a(href='#') TurboGrafx-16
+									li
+										a(href='#') Vectrex
+									li
+										a(href='#') VIC-20
+							li.dropdown-submenu
+								a(href="#") Computer Games
+								ul.dropdown-menu
+									li
+										a(href='#') PC
+									li
+										a(href='#') Mac
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown') My Games
+							b.caret
+						ul.dropdown-menu
+							li
+								a(href="/collection") My Collection
+							li
+								a(href="/tradelist") Trade List
+							li
+								a(href="/wantlist") Want List
+							li
+								a(href='/stats') Statistics
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown') Connect
+							b.caret
+						ul.dropdown-menu
+							li
+								a(href="#") My Profile
+							li
+								a(href="#") Browse Users
+							li
+								a(href="#") Inbox
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown') Other Stuff
+							b.caret
+						ul.dropdown-menu
+							li
+								a(href='/newstuff') Upcoming Features
+							li
+								a(href='/wtfmachine') WTF Should You Play?
+					li
+						a(href="#") Logout
+	block content

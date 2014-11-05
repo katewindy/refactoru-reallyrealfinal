@@ -5,12 +5,26 @@ body {
 }
 
 .jumbotron, .headercont {
-	background: url('img/tetris.jpg');
+	background: url('img/Videogame-collage-logo.jpg');
 	background-size: contain;
 }
 
 .jumbotron h1, .jumbotron p {
 	color: #808080;
+}
+.errortext {
+	color: red;
+}
+.jumbotext {
+	padding: 20px;
+	background: rgba(15, 15, 15, 0.85);
+}
+.jumbotext-alt{
+	margin: 20px;
+	color: #808080;
+}
+.inputfield {
+	margin: 0px 10px;
 }
 /* styling for loading screen on browse and collection pages*/
 #loader{
@@ -35,7 +49,7 @@ input {
 	border: none;
 }
 
-.page-header h1{
+.jumbotext-alt h1, .page-header h1{
 	color: #E8E8EE;
 }
 /*bit of a cheaty padding thing*/
