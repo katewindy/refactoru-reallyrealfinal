@@ -32,6 +32,7 @@ var authenticationController = {
 			password: req.param('password'),
 			email: req.param('email')
 		});
+		console.log(user, req.param('password'));
 		user.save(function(err, user){
 			if(err){
 				var errorMessage = 'There was an error signing you up.  Please don\'t hate us and give it another shot.';

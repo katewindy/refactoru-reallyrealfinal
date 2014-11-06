@@ -1,19 +1,66 @@
 extends layoutLogin
 
 block content
-	if error
-		h3= error
+	.padding20px
+	.container-fluid
+		.jumbotron
+			.jumbotext
+				h1 Got Games?
+				p
+					| Drowning in your backlog?  Can't remember if you've already got something?  Want to know how much your collection is worth?  VGTrackr has you covered.
+				p.signinform
+					strong Sign Up!&nbsp;&nbsp;
+					small Already signed up?  <a id="changetosignin" href="#">Sign in instead.</a>
+					form(class="loginform" action="/auth/signup", method="post")
+						input(class="inputfield" type="text", name="username", placeholder="Username")
+						input(class="inputfield" type="text", name="email", placeholder="Email")
+						input(class="inputfield" type="text", name="password", placeholder="Password")
+						input(class="btn btn-primary" type="submit")
+					if error
+						h3.errortext= error
+	.container-fluid
+		.row
+			.col-sm-6.col-md-4
+				.thumbnail
+					img(src='/img/collection1.jpg', alt='...')
+					.caption
+						h3 Keep track of your games
+						p
+							| Easily add new and classic games to your collection and look up any game in your collection in seconds.
+			.col-sm-6.col-md-4
+				.thumbnail
+					img(src='/img/perlerbeads.jpg', alt='...')
+					.caption
+						h3 What's it worth?
+						p
+							| Get accurate and up to date pricing for your collection based on Amazon, Ebay, and Gamestop pricing from Pricecharting.com.
+			.col-sm-6.col-md-4
+				.thumbnail
+					img(src='/img/nesgames.png', alt='...')
+					.caption
+						h3 Manage your Trade List
+						p Keep track of what you've got to trade, and even arrange trades.  No fees for trading, ever, and we even help match you with other users.
+	//
+		Easter Egg! 
+	.container
+		#easteregg.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal')
+						span(aria-hidden='true') ×
+						span.sr-only Close
+						h4#myModalLabel.modal-title w00t!  You remembered the Konami Code!
+					.modal-body
+						p.modaltext Yay for you!  Please enjoy this fabulous video.
+						iframe(width='420', height='315', src='http://www.youtube.com/embed/9W-VGUOiVDc?rel=0&enablejsapi=1', frameborder='0', allowfullscreen='allowfullscreen')
+						p.modaltext
+							| Seriously though, Don Hertzfeldt is mega awesome and you should definitely watch more of his stuff.
+					.modal-footer
+						button.btn.btn-default(type='button', data-dismiss='modal') Close
 
-	h1 Login
-	form(action="/auth/login", method="post")
-		input(type="text", name="username", placeholder="Username")
-		input(type="text", name="password", placeholder="Password")
-		input(type="submit")
-
-	h1 Sign Up!
-	form(action="/auth/signup", method="post")
-		input(type="text", name="username", placeholder="Username")
-		input(type="text", name="email", placeholder="Email")
-		input(type="text", name="password", placeholder="Password")
-		input(type="submit")
-	p We promise we won't be evil with your details, or spam you (we don't send out any kind of emails), or otherwise misbehave with your email address or info.  Pinky swear.
+	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+	script(src='/bootstrap/js/bootstrap.min.js')
+	script(src='/lib/sweet-alert.min.js')
+	script(src='/lib/konami.js')
+	script(src='/main.js')

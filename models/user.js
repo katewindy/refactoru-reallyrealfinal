@@ -44,11 +44,13 @@ var userSchema = mongoose.Schema({
 });
 
 userSchema.pre('save', function(next){
+	console.log('testing!');
 	if(!this.isModified('password')) return next();
+	console.log(this.password);
 	var user = this;
 	bcrypt.genSalt(10, function(err, salt){
 		if (err) return next(err);
-		bcrypt.hash(user.password, salt, function(err, hash){
+		bcrypt.hash(user.password, salt, null, function(err, hash){
 			if (err) return next(err);
 			user.password = hash;
 			return next();
