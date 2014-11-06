@@ -1,18 +1,18 @@
-extends layoutMain
+extends layoutConsoles
 
 block content
 	.container-fluid.headercont
 		.jumbotext.jumbotext-alt
 			br
 			h1
-				| Browse All #{consolename} Games&nbsp;
-				small Use the Actions menu to add a game to your collection or wishlist.
+				| Browse All <span class="console">#{consolename}</span> Games&nbsp;
+				small Use the Actions menu to add a game to your collection or wishlist, or search for a particular game using the search field below.
 				br
 				br
 				br
 	.padding20px
 	#loader
-		img(src='img/download.gif', width='40%')
+		img(src='../img/download.gif', width='40%')
 	//
 		holder for table of games 
 	.container-fluid
@@ -27,20 +27,6 @@ block content
 						th CIB Price
 						th Actions
 				tbody.tablebody
-					for game in gameList.games
-						tr
-							td: a(href="/views/#{game.gameid}")= game.productname
-							td #{game.consolename}
-							td #{game.genre}
-							td $#{game.looseprice}
-							td $#{game.cibprice}
-							td
-								a(href="#" class="toCollect #{game.gameid}")
-									i.fa.fa-plus-circle
-									&nbsp;&nbsp;
-								a(href="#" class="toWish #{game.gameid}")
-									i.fa.fa-magic
-
 	.padding20px
 	//
 		 Easter Egg! 
@@ -56,7 +42,7 @@ block content
 					.modal-body
 						p.modaltext
 							| Yay for you!  Please enjoy this gif of an adorable kitty feeding someone to a woodchipper, because why the hell not.
-						img(src='img/fargoed.gif')
+						img(src='../img/fargoed.gif')
 						p.modaltext
 							| Shouldn't you be adding things to your collection?  You know, before we send the kitty to find you?
 					.modal-footer
@@ -64,13 +50,11 @@ block content
 	//
 		 OH GOD SO MANY FREAKING SCRIPTS 
 	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
-	script(src='bootstrap/js/bootstrap.min.js')
+	script(src='../bootstrap/js/bootstrap.min.js')
 	script(src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js')
 	//
 		 include datatables 
 	script(src='http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js')
-	script(src='lib/sweet-alert.min.js')
-	script(src='lib/konami.js')
-	script(src='data.js')
-	script(src='browse.js')
-	script(src='main.js')
+	script(src='../lib/sweet-alert.min.js')
+	script(src='../lib/konami.js')
+	script(src='../scripts/byconsole.js')

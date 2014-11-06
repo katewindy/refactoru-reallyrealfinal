@@ -8,7 +8,11 @@ var indexController = {
 		res.render('collection');
 	},
 	viewConsole: function(req, res) {
-		res.render('byconsole.jade');
+		var consolename = req.params.consolename.split('_').join(' ').split('%2F').join('/');
+		console.log(consolename);
+		res.render('byconsole', {
+			consolename: consolename
+		});
 	}
 };
 

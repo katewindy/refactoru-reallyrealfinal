@@ -8,10 +8,10 @@ var apiController = {
 		});
 	},
 	getGamesByConsole: function(req, res){
-		var console = req.params.consolename;
-
-		Game.find({consolename: console}, function(err, results){
-			res.send(result);
+		var consoletype = req.query.consolename;
+		console.log('in getGamesByConsole: ', consoletype);
+		Game.find({consolename: consoletype}, function(err, results){
+			res.send(results);
 		});
 	},
 	// gets a single game from the DB
