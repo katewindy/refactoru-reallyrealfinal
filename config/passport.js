@@ -24,7 +24,7 @@ var localStrategy = new LocalStrategy(function(username, password, done){
 	});
 });
 
-passport.user(localStrategy);
+passport.use(localStrategy);
 
 module.exports = {
 	ensureAuthenticated: function(req, res, next){
