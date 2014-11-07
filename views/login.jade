@@ -8,16 +8,16 @@ block content
 				h1 Got Games?
 				p
 					| Drowning in your backlog?  Can't remember if you've already got something?  Want to know how much your collection is worth?  VGTrackr has you covered.
-				p.signinform
-					strong Sign Up!&nbsp;&nbsp;
-					small Already signed up?  <a id="changetosignin" href="#">Sign in instead.</a>
-					form(class="loginform" action="/auth/signup", method="post")
-						input(class="inputfield" type="text", name="username", placeholder="Username")
-						input(class="inputfield" type="text", name="email", placeholder="Email")
-						input(class="inputfield" type="text", name="password", placeholder="Password")
-						input(class="btn btn-primary" type="submit")
+				.signinform
+					p
+						strong Log in!&nbsp;&nbsp;
+						small Not a member?  <a id="changetosignin" href="#">Sign up instead.</a>
+						form(action="/auth/login", method="post")
+							input(class="inputfield" type="text", name="username", placeholder="Username")
+							input(class="inputfield" type="text", name="password", placeholder="Password")
+							input(class="btn btn-primary" type="submit")
 					if error
-						h3.errortext= error
+						h5.errortext= error
 	.container-fluid
 		.row
 			.col-sm-6.col-md-4
@@ -63,4 +63,7 @@ block content
 	script(src='/bootstrap/js/bootstrap.min.js')
 	script(src='/lib/sweet-alert.min.js')
 	script(src='/lib/konami.js')
+	script(src='/scripts/loginsignup.js')
 	script(src='/main.js')
+
+		
