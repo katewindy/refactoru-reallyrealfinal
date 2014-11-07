@@ -30,7 +30,10 @@ var authenticationController = {
 		var user = new User({
 			username: req.param('username'),
 			password: req.param('password'),
-			email: req.param('email')
+			email: req.param('email'),
+			games: {
+				gamesInCollection: 0
+			}
 		});
 		console.log(user, req.param('password'));
 		user.save(function(err, user){

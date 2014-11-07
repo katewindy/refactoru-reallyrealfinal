@@ -1,7 +1,20 @@
 extends layoutMain
 
 block content
-	h1 I'm a placeholder! YAY.
+	.container-fluid.headercont
+		.jumbotext.jumbotext-alt
+			br
+			h1
+				| Hi, #{user.username}!<br>
+				small Check out the latest news.
+				br
+				br
+				br
+	.padding20px 
+		if user.userCollection.gamesInCollection === 0
+			p You don't have any games in your collection yet!  <a href="#">Add some?</a>
+		else
+			p You currently have #{user.userCollection.gamesInCollection} games in your collection.
 	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
 	script(src='/bootstrap/js/bootstrap.min.js')
 	script(src='/lib/sweet-alert.min.js')

@@ -22,7 +22,8 @@ var userSchema = mongoose.Schema({
 	userCollection: {
 		isPublic: Boolean,
 		isTradeListPublic: Boolean,
-		games: {
+		gamesInCollection: Number,
+		games: [{
 			gameid: String,
 			isCIB: Boolean,
 			price: Number,
@@ -31,15 +32,15 @@ var userSchema = mongoose.Schema({
 			inTradeList: Boolean,
 			rating: Number,
 			favorite: Boolean
-		}
+		}]
 	},
 	userWishList: {
 		isWishListPublic: Boolean,
-		games: {
+		games: [{
 			gameid: String,
 			dateAdded: String,
 			important: Boolean
-		}
+		}]
 	}
 });
 
