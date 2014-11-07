@@ -10,8 +10,9 @@ block content
 				br
 				br
 				br
-	.padding20px 
-		if user.userCollection.gamesInCollection === 0
+	.padding20px
+	.container-fluid 
+		if (user.userCollection.gamesInCollection === 0)
 			p You don't have any games in your collection yet!  <a href="#">Add some?</a>
 		else
 			p You currently have #{user.userCollection.gamesInCollection} games in your collection.

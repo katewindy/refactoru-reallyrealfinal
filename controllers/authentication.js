@@ -31,7 +31,7 @@ var authenticationController = {
 			username: req.param('username'),
 			password: req.param('password'),
 			email: req.param('email'),
-			games: {
+			userCollection: {
 				gamesInCollection: 0
 			}
 		});
