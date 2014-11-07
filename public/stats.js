@@ -18,8 +18,8 @@ $(document).on('ready', function() {
   	}
   	// if there's stuff in the array, put the proper values in their proper places
   	else {
-  		$('.totalgames').text(tableData.length);
-		var looseval = '$' + ttlValLoose(user.userCollection.populate());
+  		$('.totalgames').text(user.userCollection.length);
+		var looseval = '$' + ttlValLoose();
 		$('.looseval').text(looseval);
 		var cibval = '$' + ttlValCIB(tableData);
 		$('.cibval').text(cibval);

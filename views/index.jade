@@ -29,7 +29,7 @@ block content
 								| Total Games
 								br
 								| Owned
-							h1.totalgames #{user.userCollection.length}
+							h1.totalgames 0
 					.col-md-3.col-sm-6.col-xs-12
 						.stattext
 							h4
@@ -103,6 +103,8 @@ block content
 							| If you are reading this, you aren't following directions.  For more information, please reread.
 					.modal-footer
 						button.btn.btn-default(type='button', data-dismiss='modal') Close
+	script(type='text/javascript').
+		var user =!{JSON.stringify(user)}
 	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
 	script(src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js')
 	script(src='bootstrap/js/bootstrap.min.js')
