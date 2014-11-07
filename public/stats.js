@@ -2,7 +2,7 @@ $(document).on('ready', function() {
 	// load collection array from local storage
   	var tableData = JSON.parse(localStorage.getItem('myCollection'));
   	// check to see if collection array is empty; if so, then append text indicating there are no games in the collection to have stats for.
-  	if (tableData===null){
+  	if (user.userCollection.length ===null){
   		var totalgames = '0';
   		var looseval = '$0.00';
   		var cibval = '$0.00';
@@ -19,7 +19,7 @@ $(document).on('ready', function() {
   	// if there's stuff in the array, put the proper values in their proper places
   	else {
   		$('.totalgames').text(tableData.length);
-		var looseval = '$' + ttlValLoose(tableData);
+		var looseval = '$' + ttlValLoose(user.userCollection.populate());
 		$('.looseval').text(looseval);
 		var cibval = '$' + ttlValCIB(tableData);
 		$('.cibval').text(cibval);

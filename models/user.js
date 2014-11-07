@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
+var Game = require('../models/game1.js');
 
 var userSchema = mongoose.Schema({
 	username:{
@@ -19,29 +20,24 @@ var userSchema = mongoose.Schema({
 	firstName: String,
 	lastName: String,
 	userPicUrl: String,
-	userCollection: {
-		isPublic: Boolean,
-		isTradeListPublic: Boolean,
-		gamesInCollection: Number,
-		games: [{
-			gameid: String,
+	userCollection: [{
+			gameid: mongoose.Schema.ObjectId,
 			isCIB: Boolean,
-			price: Number,
 			conditionNotes: String,
 			photoUrl: String,
 			inTradeList: Boolean,
 			rating: Number,
 			favorite: Boolean
-		}]
-	},
-	userWishList: {
-		isWishListPublic: Boolean,
-		games: [{
+		}],
+	collectionIsPublic: Boolean,
+	isTradeListPublic: Boolean,
+	gamesInCollection: Number,
+	userWishList: [{
 			gameid: String,
 			dateAdded: String,
 			important: Boolean
-		}]
-	}
+		}],
+	isWishListPublic: Boolean
 });
 
 userSchema.pre('save', function(next){

@@ -1,4 +1,5 @@
 var Game = require('../models/game1.js');
+var User = require('../models/user.js');
 
 var apiController = {
 	//gets a list of all games (TRY NOT TO USE)
@@ -20,6 +21,41 @@ var apiController = {
 		Game.findOne({gameid: id}, function(err, result){
 			res.send(result);
 		});
+	},
+	//adds game to user's collection
+	addGametoCollection: function(req, res){
+		var addGameId = req.body.gameid;
+		var addToUser = req.user._id;
+		var gameIsCIB = req.body.isCIB;
+		Game.find({gameid: addGameId}, function(err, result){
+			var pushthis = {gameid: result[0]._id, isCIB: gameIsCIB};
+			User.update(
+				{_id: addToUser}, 
+				{$push: {userCollection: pushthis}}, function(err){
+					if (err) console.log("contact addMsg error: " + err);
+					console.log('game added!');
+					res.send('success!');
+				});
+
+			
+		});	
+	},
+	addGametoWantList: function(req, res){
+		var addGameId = req.body.gameid;
+		var addToUser = req.user._id;
+		console.log('addGameId: ', addGameId);
+		console.log('addToUser :', addToUser);
+		Game.find({gameid: addGameId}, function(err, result){
+			var pushthis = {gameid: result[0]._id};
+			User.update(
+				{_id: addToUser}, 
+				{$push: {userWishList: pushthis}}, function(err){
+					if (err) console.log("contact addMsg error: " + err);
+
+					console.log('game added!');
+					res.send('success!');
+				});	
+		});	
 	}
 };
 

@@ -49,7 +49,8 @@ app.get('/consoles/:consolename', indexController.viewConsole);
 
 //api routes
 app.get('/api/getGamesByConsole', apiController.getGamesByConsole);
-
+app.post('/api/addGametoCollection', apiController.addGametoCollection);
+app.post('/api/addGametoWantList', apiController.addGametoWantList);
 var server = app.listen(9661, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });

@@ -45,8 +45,36 @@ $(function(){
 			$('.tablebody').append(gameElement);
 		}
 		$('#datatable').DataTable({
-		"pageLength":20,
-		"lengthChange": false
+			"pageLength":20,
+			"lengthChange": false
+		});
 	});
+
+	//add a game to your collection
+	$(document).on('click', '.toCollection', function(e){
+		e.preventDefault();
+		var addGameID = $(this).attr("data-id");
+		var thisthis = $(this);
+		console.log(addGameID);
+		$.post('/api/addGameToCollection', {gameid: addGameID, isCIB: false}, function (responseData){
+			console.log(responseData);
+			thisthis.children().removeClass('fa-plus-circle');
+			thisthis.children().addClass('fa-minus-circle');
+
+		});
+	});
+
+		//add a game to your wishlist
+	$(document).on('click', '.toWants', function(e){
+		e.preventDefault();
+		var addGameID = $(this).attr("data-id");
+		var thisthis = $(this);
+		console.log(addGameID);
+		$.post('/api/addGameToWantList', {gameid: addGameID, isCIB: false}, function (responseData){
+			console.log(responseData);
+			thisthis.children().removeClass('fa-magic');
+			thisthis.children().addClass('fa-star').css('color' , 'yellow');
+
+		});
 	});
 });

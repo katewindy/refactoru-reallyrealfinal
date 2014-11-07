@@ -6,19 +6,107 @@ block content
 			br
 			h1
 				| Hi, #{user.username}!<br>
-				small Check out the latest news.
+				small Check out your latest statistics.
 				br
 				br
 				br
 	.padding20px
 	.container-fluid 
-		if (user.userCollection.gamesInCollection === 0)
+		if (user.gamesInCollection === 0)
 			p You don't have any games in your collection yet!  <a href="#">Add some?</a>
 		else
-			p You currently have #{user.userCollection.gamesInCollection} games in your collection.
+			p You currently have #{user.userCollection.length} games in your collection.
+	.container-fluid
+		.row
+			.col-xs-12
+				.titlestrike
+					h3.title Basic Stats
+			.row
+				.col-xs-12
+					.col-md-3.col-sm-6.col-xs-12
+						.stattext
+							h4
+								| Total Games
+								br
+								| Owned
+							h1.totalgames #{user.userCollection.length}
+					.col-md-3.col-sm-6.col-xs-12
+						.stattext
+							h4
+								| Total Value
+								br
+								| (Loose)
+							h1.looseval $23456
+					.col-md-3.col-sm-6.col-xs-12
+						.stattext
+							h4
+								| Total Value
+								br
+								| (CIB)
+							h1.cibval $23456
+					.col-md-3.col-sm-6.col-xs-12
+						.stattext
+							h4
+								| Average Value
+								br
+								| (Loose)
+							h1.looseavgval $25.00
+			.row
+				.col-xs-12
+					.col-sm-6.col-xs-12
+						.stattext
+							h4 Most Common Genre
+							h2.commongenre Puzzle
+					.col-sm-6.col-xs-12
+						.stattext
+							h4 Most Common Console
+							h2.commonconsole Playstation 2
+		.padding20px
+		.row
+			.col-xs-12
+				.titlestrike
+					h3.title Neato Charts!
+		.row
+			.col-sm-6.col-xs-12
+				.graphtext
+					h3 Consoles
+					p
+						| Hover over the chart below to see how many games for each system are in your collection.
+			.col-sm-6.col-xs-12.graphtext
+				.graphtext
+					h3 Genres
+					p
+						| Hover over the chart below to see how many games of each genre are in your collection.
+	.row
+		.col-sm-6.col-xs-12
+			#graphtastic1
+				canvas#consoleChart(width='300', height='300')
+		.col-sm-6.col-xs-12
+			#graphtastic2
+				canvas#genreChart(width='300', height='300')
+	//
+		 Easter Egg! 
+	.container
+		#easteregg.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal')
+							span(aria-hidden='true') ×
+							span.sr-only Close
+						h4#myModalLabel.modal-title w00t!  You remembered the Konami Code!
+					.modal-body
+						p.modaltext
+							| Yay for you!  Unfortunately, you've broken the internet.  Please stare into the center of the image below for perpetuity.
+						img(src='img/brokeinternet.gif', alt='')
+						p.modaltext
+							| If you are reading this, you aren't following directions.  For more information, please reread.
+					.modal-footer
+						button.btn.btn-default(type='button', data-dismiss='modal') Close
 	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
-	script(src='/bootstrap/js/bootstrap.min.js')
-	script(src='/lib/sweet-alert.min.js')
-	script(src='/lib/konami.js')
-	script(src='/scripts/loginsignup.js')
-	script(src='/main.js')
+	script(src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js')
+	script(src='bootstrap/js/bootstrap.min.js')
+	script(src='lib/konami.js')
+	script(src='lib/chart.min.js')
+	script(src='stats.js')
+	script(src='main.js')
