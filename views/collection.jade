@@ -50,11 +50,13 @@ block content
 	//
 		Here all the scripts be 
 	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
-	script(src='bootstrap/js/bootstrap.min.js')
+	script(src='/bootstrap/js/bootstrap.min.js')
 	//
-		include datatables 
+		include datatables
+	script(type='text/javascript').
+		var user =!{JSON.stringify(user)} 
 	script(src='http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js')
-	script(src='lib/sweet-alert.min.js')
-	script(src='lib/konami.js')
-	script(src='collection.js')
-	script(src='main.js')
+	script(src='/lib/sweet-alert.min.js')
+	script(src='/lib/konami.js')
+	script(src='/scripts/collection.js')
+	script(src='/main.js')

@@ -25,6 +25,11 @@ var indexController = {
 			user: req.user,
 			consolename: consolename
 		});
+	},
+	showProfile: function(req, res){
+		res.render('profile', {
+			user: req.user
+		});
 	}
 };
 

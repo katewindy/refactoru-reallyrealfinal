@@ -1,0 +1,59 @@
+extends layoutMain
+
+block content
+	.container-fluid.headercont
+		.jumbotext.jumbotext-alt
+			.container-fluid
+				.row
+					.col-md-2
+						br
+						img(src="http://placehold.it/150x150")
+					.col-md-10
+						h1
+							| #{user.username}
+							br
+							if (user.headline)
+								small #{user.headline}
+							else
+								small Your headline goes here.  Edit your profile to add one.
+						br
+						br
+	.padding20px
+	.container-fluid
+		.row
+			.col-xs-12
+				.titlestrike
+					h3.title Basic Info
+			.row
+				.col-xs-12
+					.col-md-3.col-sm-6.col-xs-12
+						.stattext
+							h4
+								| Total Games
+								br
+								| Owned
+							h1.totalgames 0
+					.col-md-3.col-sm-6.col-xs-12
+						.stattext
+							h4
+								| Total Value
+								br
+								| (Loose)
+							h1.looseval $23456
+					.col-md-3.col-sm-6.col-xs-12
+						.stattext
+							h4
+								| Total Value
+								br
+								| (CIB)
+							h1.cibval $23456
+					.col-md-3.col-sm-6.col-xs-12
+						.stattext
+							h4
+								| Average Value
+								br
+								| (Loose)
+							h1.looseavgval $25.00
+			.row
+				.col-xs-12
+				

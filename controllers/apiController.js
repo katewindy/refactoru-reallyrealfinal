@@ -56,6 +56,15 @@ var apiController = {
 					res.send('success!');
 				});	
 		});	
+	},
+	getUserInfo: function(req, res){
+		console.log('getUserInfo called!');
+		User.find({_id:req.user._id})
+			.populate('gameid', {}, 'Game').exec(function(err, user){
+			if (err) return handleError(err);
+			console.log(user.userCollection);
+			res.send(user);
+		});
 	}
 };
 

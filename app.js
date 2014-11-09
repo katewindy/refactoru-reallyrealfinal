@@ -45,12 +45,15 @@ app.use(passportConfig.ensureAuthenticated);
 app.get('/', indexController.index);
 app.get('/collection', indexController.collection);
 app.get('/consoles/:consolename', indexController.viewConsole);
-
+app.get('/profiles/:username', indexController.showProfile);
 
 //api routes
 app.get('/api/getGamesByConsole', apiController.getGamesByConsole);
 app.post('/api/addGametoCollection', apiController.addGametoCollection);
 app.post('/api/addGametoWantList', apiController.addGametoWantList);
+app.get('/api/getUserInfo', apiController.getUserInfo);
+
+// start server
 var server = app.listen(9661, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });
