@@ -30,6 +30,7 @@ var userSchema = mongoose.Schema({
 	xboxliveid: String,
 	nintendoid: String,
 	kongregateid: String,
+	userCollectionGames: [{type: mongoose.Schema.ObjectId, ref: 'Game'}],
 	userCollection: [{
 			gameid: {type: mongoose.Schema.ObjectId, ref:'Game'},
 			isCIB: Boolean,
@@ -44,6 +45,7 @@ var userSchema = mongoose.Schema({
 	gamesInCollection: Number,
 	gamesInTradeList: Number,
 	gamesInWantList: Number,
+	userWishListGames: [{type: mongoose.Schema.ObjectId, ref: 'Game'}],
 	userWishList: [{
 			gameid: {type: mongoose.Schema.ObjectId, ref:'Game'},
 			dateAdded: String,

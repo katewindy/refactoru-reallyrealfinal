@@ -37,16 +37,28 @@ $(function(){
 
 	
 	//populate the table with games
-	$.get('/api/getUserInfo', {_id: user._id}, function(responseData){
-		console.log('getUserInfo response:', responseData);
-		// for (var i = 0; i < responseData.length; i ++) {
-		// 	var gameElement = renderGameList(responseData[i]);
-		// 	$('.tablebody').append(gameElement);
-		// }
-		// $('#datatable').DataTable({
-		// 	"pageLength":20,
-		// 	"lengthChange": false
-		// });
+	var userInfoString = $.get('/api/getUserInfo', {_id: user._id}, function(responseData){
+		console.log('getUserInfo response:', Object.keys(responseData));
+		var stringy = JSON.stringify(responseData);
+		console.log('stringy: ', stringy);
+		// var userInfo = JSON.parse(stringy);
+		// console.log('userInfo: ', userInfo);
+		// var collection = userInfo.userCollectionGames;
+		// console.log('collection: ', collection);
+		return stringy;
+		
+	});
+
+	var userInfo = JSON.parse(stringy);
+	console.log('User Info after call: ', userInfo);
+
+	for (var i = 0; i < collection.length; i ++) {
+		var gameElement = renderGameList(collection[i]);
+		$('.tablebody').append(gameElement);
+	}
+	$('#datatable').DataTable({
+		"pageLength":20,
+		"lengthChange": false
 	});
 
 	// //add a game to your collection

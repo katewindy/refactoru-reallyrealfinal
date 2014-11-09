@@ -33,6 +33,11 @@ var apiController = {
 				{_id: addToUser}, 
 				{$push: {userCollection: pushthis}}, function(err){
 					if (err) console.log("contact addMsg error: " + err);
+					});
+			User.update(
+				{_id: addToUser}, 
+				{$push: {userCollectionGames: result[0]._id}}, function(err){
+					if (err) console.log("contact addMsg error: " + err);
 					console.log('game added!');
 					res.send('success!');
 				});
@@ -51,6 +56,11 @@ var apiController = {
 				{_id: addToUser}, 
 				{$push: {userWishList: pushthis}}, function(err){
 					if (err) console.log("contact addMsg error: " + err);
+				});
+			User.update(
+				{_id: addToUser}, 
+				{$push: {userWishListGames: result[0]._id}}, function(err){
+					if (err) console.log("contact addMsg error: " + err);
 
 					console.log('game added!');
 					res.send('success!');
@@ -60,9 +70,9 @@ var apiController = {
 	getUserInfo: function(req, res){
 		console.log('getUserInfo called!');
 		User.find({_id:req.user._id})
-			.populate('gameid', {}, 'Game').exec(function(err, user){
+			.populate('userCollectionGames', {}, 'Game').exec(function(err, user){
 			if (err) return handleError(err);
-			console.log(user.userCollection);
+			console.log('user.userCollection(inside apiController): ', user.userCollection);
 			res.send(user);
 		});
 	}
