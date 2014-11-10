@@ -15,7 +15,7 @@ var renderGameList = function(gameData){
 	el.append('<td>'+ gameData.genre + '</td>');
 	el.append('<td>$' + Number(gameData.looseprice).toFixed(2) + '</td>');
 	el.append('<td>$' + Number(gameData.cibprice).toFixed(2) + '</td>');
-	el.append('<td class="actions"><a href="#"" class="toCollection" data-id="' + gameData.gameid + '"><i class="fa fa-plus-circle"></i></a>&nbsp;&nbsp;<a href="#" class="toWants"data-id="' + gameData.gameid + '"><i class="fa fa-magic"></i></a></td>');
+	el.append('<td class="actions"><a href="#"" class="deleteFromCollection" data-id="' + gameData.gameid + '"><i class="fa fa-minus-circle"></i></a>&nbsp;&nbsp;<a href="#" class="toTrade"data-id="' + gameData.gameid + '"><i class="fa fa-refresh"></i></a></td>');
 	return el;
 };
 
@@ -41,18 +41,24 @@ $(function(){
 		console.log('getUserInfo response:', Object.keys(responseData));
 		var stringy = JSON.stringify(responseData);
 		console.log('stringy: ', stringy);
-		// var userInfo = JSON.parse(stringy);
-		// console.log('userInfo: ', userInfo);
-		// var collection = userInfo.userCollectionGames;
-		// console.log('collection: ', collection);
-		return stringy;
+		console.log(responseData);
+
+		for (var i = 0; i < responseData.userCollectionGames.length; i ++) {
+		var gameElement = renderGameList(responseData.userCollectionGames[i]);
+		$('.tablebody').append(gameElement);
+		}
+		$('#datatable').DataTable({
+		"pageLength":20,
+		"lengthChange": false
+		});
+		return responseData;
 		
 	});
+	// userInfoString = userInfoString.responseText;
+	
+	console.log('User Info after call: ', userInfoString);
 
-	var userInfo = JSON.parse(stringy);
-	console.log('User Info after call: ', userInfo);
-
-	for (var i = 0; i < collection.length; i ++) {
+	for (var i = 0; i < userInfoString.userCollectionGames.length; i ++) {
 		var gameElement = renderGameList(collection[i]);
 		$('.tablebody').append(gameElement);
 	}

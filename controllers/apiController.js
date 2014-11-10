@@ -69,13 +69,14 @@ var apiController = {
 	},
 	getUserInfo: function(req, res){
 		console.log('getUserInfo called!');
-		User.find({_id:req.user._id})
+		User.findOne({_id:req.user._id})
 			.populate('userCollectionGames', {}, 'Game').exec(function(err, user){
 			if (err) return handleError(err);
 			console.log('user.userCollection(inside apiController): ', user.userCollection);
 			res.send(user);
 		});
 	}
+
 };
 
 module.exports = apiController;
