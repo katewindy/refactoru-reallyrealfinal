@@ -14,7 +14,7 @@ block content
 						small Not a member?  <a id="changetosignin" href="#">Sign up instead.</a>
 						form(action="/auth/login", method="post")
 							input(class="inputfield" type="text", name="username", placeholder="Username")
-							input(class="inputfield" type="text", name="password", placeholder="Password")
+							input(class="inputfield" type="password", name="password", placeholder="Password")
 							input(class="btn btn-primary" type="submit")
 					if error
 						h5.errortext= error

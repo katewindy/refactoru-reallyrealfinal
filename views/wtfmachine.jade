@@ -1,0 +1,58 @@
+extends layoutMain
+
+block content
+	.container-fluid.headercont
+		.jumbotext.jumbotext-alt
+			br
+			h1
+				| WTF Should You Play?&nbsp;
+				small Get a random game to play from your collection.
+			br
+			br
+	//
+		begin page body content container 
+	.container-fluid
+		.col-xs-12
+			h2 Pick a Genre
+			.buttonholder
+				//
+					buttons go here 
+			.slotimg.col-md-6.col-sm-12
+				.stattext
+					img#slotimg(src='img/slots.gif', alt='')
+			.result.col-md-6.col-sm-12(style='text-align: center;')
+				.stattext(style='height: 312px;')
+					h3.question You should totally play:
+					h1.answer
+		//
+			Easter Egg! 
+	.container
+		#easteregg.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal')
+							span(aria-hidden='true') ×
+							span.sr-only Close
+						h4#myModalLabel.modal-title w00t!  You remembered the Konami Code!
+					.modal-body
+						p.modaltext Yay for you!
+						p.modaltext
+							| I'm getting a little tired of thinking of things that are funny to put in these, so you get this thing, what haunted my nightmares as a child, courtesy of Scary Stories to Tell in the Dark.
+						img(src='img/scary.jpg', alt='')
+						p.modaltext
+							| If you've never seen this thing before, you clearly were not a small child in the late 80's or early 90's.
+					.modal-footer
+						button.btn.btn-default(type='button', data-dismiss='modal') Close
+		//
+			Here all the scripts be 
+		script(type='text/javascript').
+			var user =!{JSON.stringify(user)}
+		script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+		script(src='/bootstrap/js/bootstrap.min.js')
+		script(src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js')
+		//
+			include datatables 
+		script(src='/lib/konami.js')
+		script(src='/scripts/WTFmachine.js')
+		script(src='/main.js')

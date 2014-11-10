@@ -47,6 +47,7 @@ app.get('/', indexController.index);
 app.get('/collection', indexController.collection);
 app.get('/consoles/:consolename', indexController.viewConsole);
 app.get('/profiles/:username', indexController.showProfile);
+app.get('/wtfmachine', indexController.wtfmachine);
 
 //api routes
 app.get('/api/getGamesByConsole', apiController.getGamesByConsole);

@@ -33,6 +33,11 @@ var indexController = {
 	},
 	faq: function(req, res){
 		res.render('faq');
+	},
+	wtfmachine: function(req, res){
+		res.render('wtfmachine', {
+			user: req.user
+		});
 	}
 };
 
