@@ -70,9 +70,9 @@ var apiController = {
 	getUserInfo: function(req, res){
 		console.log('getUserInfo called!');
 		User.findOne({_id:req.user._id})
-			.populate('userCollectionGames', {}, 'Game').exec(function(err, user){
+			.populate('userCollectionGames', {}, 'Game').populate('userWishListGames',{}, 'Game').exec(function(err, user){
 			if (err) return handleError(err);
-			console.log('user.userCollection(inside apiController): ', user.userCollection);
+			console.log('user.userCollection(inside apiController): ', user.userCollectionGames);
 			res.send(user);
 		});
 	}

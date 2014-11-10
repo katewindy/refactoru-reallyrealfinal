@@ -1,0 +1,62 @@
+extends layoutMain
+
+block content
+	.container-fluid.headercont
+		.jumbotext.jumbotext-alt
+			br
+			h1
+				| My Trade List&nbsp;
+				small Use the actions button to delete a game from your trade list.
+			br
+			br
+			br
+	.padding20px
+	#loader
+		img(src='img/download.gif', width='40%')
+	//
+		begin datatable container 
+	.container-fluid
+		.tableholder
+			table#datatable.row-border.hover.compact.order-column.nowraps
+				thead
+					tr
+						th Game Title
+						th Console
+						th Genre
+						th Loose Price
+						th CIB Price
+						th Actions
+				tbody.tablebody
+	.padding20px
+	//
+		Easter Egg! 
+	.container
+		#easteregg.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal')
+							span(aria-hidden='true') ×
+							span.sr-only Close
+						h4#myModalLabel.modal-title w00t!  You remembered the Konami Code!
+					.modal-body
+						p.modaltext
+							| Yay for you!  Please enjoy this video of me and my friend playing a cover of Going to Georgia by the Mountain Goats.  Shockingly, I'm the girl.
+						iframe(width='420', height='315', src='http://www.youtube.com/embed/f6dc03M_el0?rel=0&enablejsapi=1', frameborder='0', allowfullscreen='allowfullscreen')
+						p.modaltext
+							| In all seriousness, though, the Mountain Goats are the best band ever.  Marko and I, however, are not.
+					.modal-footer
+						button.btn.btn-default(type='button', data-dismiss='modal') Close
+	//
+		Here all the scripts be 
+	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+	script(src='/bootstrap/js/bootstrap.min.js')
+	//
+		include datatables
+	script(type='text/javascript').
+		var user =!{JSON.stringify(user)} 
+	script(src='http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js')
+	script(src='/lib/sweet-alert.min.js')
+	script(src='/lib/konami.js')
+	script(src='/scripts/tradelist.js')
+	script(src='/main.js')
