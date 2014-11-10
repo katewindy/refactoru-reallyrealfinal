@@ -1,0 +1,95 @@
+extends layoutLogin
+
+block content
+	.container-fluid.headercont
+		.jumbotext.jumbotext-alt
+			br
+			h1
+				| About VGTrackr&nbsp;
+				small Find out about what this is, who made it, why, and what's coming.  Most of it, anyway.
+			br
+			br
+			br
+	//
+		begin page body content container 
+	.col-sm-12
+		.about
+			h1 About VGTrackr
+			p
+				| VGTrackr is a project by Kate Windheuser-Rodriguez, made as a final project for the Fall 2014 Web Development cohort at RefactorU in lovely, though somewhat crunchy, Boulder, Colorado.  It is a video game cataloguing app written in HTML5, CSS3, and Javascript, using MongoDB for the database on a Node.js server.
+			
+			h1 Features
+
+			h3 Individual Game Pages
+			p
+				| Clicking on the name of a game in the browse page or in your collection will take you to a page for that specific game, where you'll have the ability to rate the game, add it to your collection or wantlist, and leave reviews of your opinion of the game.  
+
+			h3 More Collection Features
+			p
+				| Upon adding a game to your collection, you'll be able to look it up and rate the game from 1 to 5 stars.  You will also be able to indicate whether your game is complete in box (CIB) or loose(something is missing) and get the appropriate price data, instead of having both prices for each game.  Finally, you'll be able to choose whether each game has been played, completed, or you haven't started it.
+
+			h3 Trade Lists
+			p
+				| From your collection screen, you'll have the ability to add games to a list of games you'd like to trade for different games.   Games added to your trade list will appear on your profile so other users can see them and potentially contact you to set up a trade.  Please note that any trades conducted through this site will be at your own risk.  Bad traders will be banned, but we can't promise everyone is going to be a saint.
+
+			h3 Want Lists
+			p
+				| While browsing games, you'll have the opportunity to add games to your want list.  This will also be displayed on your profile, so users wishing to trade with you will know what you want in return!
+
+			h1 Upcoming Features
+			h3 Follow Friends
+			p
+				| If you have friends that use VGTrackr or just want to keep track of that guy who's got all the best stuff in his tradelist, you can follow other users.  Users you follow will not be required to follow you back.
+
+			h3 Export to PDF or CSV
+			p
+				| Need a copy of your collection for some reason?  Maybe your insurance agent wants a list of everything so they can insure your collection.  You'll be able to export your collection to a PDF or CSV formatted file, making it easy for you to take your data with you or share it with someone who isn't a user of this site.
+
+			h3 Interact!
+			p
+				| A messaging system will be introduced, so you can communicate with other users.  Forums may also be introduced, but not probably for awhile.
+
+			h3 Extra Stuff
+			p
+				| I'm also planning on integrating a feed of video game news articles from various sources, as well as expanding the "WTF Should I Play" machine, which, given a genre, will give you back a random game in your collection to include an option to select just the games in your collection you haven't played.
+
+			h3 Pie in the Sky Possible Features
+			p
+				| I'm hoping to also integrate Steam functionality, so you could add all the Steam games you own into your collection (though not their prices, because it's not like you can sell them to someone else).  I'd also like people to be able to display their Playstation and Xbox trophies on their profile eventually.  
+
+			h1 Contact Kate
+			p
+				| Find a major bug?  If it's happening in anything other than the latest Chrome browser, I really don't care at the moment.  Upgrade your browser to <a href="https://www.google.com/chrome/browser/">Chrome</a>, foo.
+			p
+				| If you're still using IE, feel free to visualize me looking at you with the utmost distain.
+			p
+				| Email: <a href="mailto:roboticbrain@gmail.com">roboticbrain@gmail.com</a><br>Github: <a href="https://github.com/katewindy">katewindy</a><br>Steam: <a href="http://steamcommunity.com/id/katekaos">katekaos</a><br>Kongregate: <a href="http://www.kongregate.com/accounts/katekaos">katekaos</a><br>Twitter: <a href="https://twitter.com/katewindheuser">@katewindheuser</a>
+			p
+	//
+		Easter Egg! 
+	.container
+		#easteregg.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal')
+						span(aria-hidden='true') ×
+						span.sr-only Close
+						h4#myModalLabel.modal-title w00t!  You remembered the Konami Code!
+					.modal-body
+						p.modaltext Yay for you!
+						p.modaltext
+							| I'm getting a little tired of thinking of things that are funny to put in these, so you get this thing, what haunted my nightmares as a child, courtesy of Scary Stories to Tell in the Dark.
+							img(src='img/scary.jpg', alt='')
+						p.modaltext
+							| If you've never seen this thing before, you clearly were not a small child in the late 80's or early 90's.
+					.modal-footer
+						button.btn.btn-default(type='button', data-dismiss='modal') Close
+	//
+		Here all the scripts be 
+	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+	script(src='/bootstrap/js/bootstrap.min.js')
+	//
+		include datatables 
+	script(src='/lib/konami.js')
+	script(src='/main.js')

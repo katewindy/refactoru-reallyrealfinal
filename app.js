@@ -27,6 +27,7 @@ app.use(session({secret: 'secret'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('/aboutVGTrackr', indexController.faq);
 // Our get request for viewing the login page
 app.get('/auth/login', authenticationController.login);
 

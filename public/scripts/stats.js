@@ -1,8 +1,9 @@
 $(document).on('ready', function(){
 	$.get('/api/getUserInfo', {_id: user._id}, function(responseData){
 		var user = responseData;
-		
-		if(user.userCollectionGames.length === null){
+		console.log(user.userCollectionGames.length);
+		var tableData = user.userCollectionGames;
+		if(user.userCollectionGames.length === 0){
 		var totalgames = '0';
   		var looseval = '$0.00';
   		var cibval = '$0.00';
@@ -18,7 +19,7 @@ $(document).on('ready', function(){
 		}
 	
 	else {
-		var tableData = user.userCollectionGames;
+		
   		$('.totalgames').text(user.userCollectionGames.length);
 		var looseval = '$' + ttlValLoose(tableData);
 		$('.looseval').text(looseval);
@@ -30,7 +31,7 @@ $(document).on('ready', function(){
 		$('.commongenre').text(commongenre);
 		var commonconsole = commonConsole(tableData);
 		$('.commonconsole').text(commonconsole);
-		
+		}
 	
 		//draw some fucking charts
 		var genreChartData = genreDataFormatter(tableData);
@@ -40,7 +41,7 @@ $(document).on('ready', function(){
 		
 		var ctx = document.getElementById('genreChart').getContext('2d');
 		var myGenreChart = new Chart(ctx).Pie(genreChartData);
-		}
+		
 	});
 });
 
@@ -136,7 +137,7 @@ function genreDataFormatter (tableData) {
 	var counts = {};
 	var chartData = [];
 	console.log(collectionData);
-	if (collectionData===null) {
+	if (collectionData.length===0) {
 		var nodata = new ChartDataConstructor('1', '#FF0000', '#FF0000', 'None');
 		chartData.push(nodata);
 	}
@@ -169,7 +170,8 @@ function consoleDataFormatter (tableData) {
 	var consolearray = [];
 	var counts = {};
 	var chartData = [];
-	if (collectionData===null) {
+	console.log(collectionData.length);
+	if (collectionData.length===0) {
 		var nodata = new ChartDataConstructor('1', '#FF0000', '#FF0000', 'None');
 		chartData.push(nodata);
 	}

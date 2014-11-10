@@ -30,6 +30,9 @@ var indexController = {
 		res.render('profile', {
 			user: req.user
 		});
+	},
+	faq: function(req, res){
+		res.render('faq');
 	}
 };
 
