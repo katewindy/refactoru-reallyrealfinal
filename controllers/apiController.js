@@ -1,5 +1,7 @@
 var Game = require('../models/game1.js');
 var User = require('../models/user.js');
+var ObjectId = require('mongoose').Types.ObjectId;
+
 
 var apiController = {
 	//gets a list of all games (TRY NOT TO USE)
@@ -74,6 +76,42 @@ var apiController = {
 			if (err) return handleError(err);
 			console.log('user.userCollection(inside apiController): ', user.userCollectionGames);
 			res.send(user);
+		});
+	},
+	removeGameFromCollection: function(req, res){
+		console.log('removeGameFromCollection called!');
+		var gameToDelete = req.body.gameid;
+		var removeFromUser = req.user._id;
+		Game.find({gameid: gameToDelete}, function(err, result){
+				var removethis = result[0]._id;
+				console.log('removethis: ', removethis);
+				console.log('removefromuser: ', removeFromUser);	
+				User.update(
+				{_id: removeFromUser}, 
+				{$pull: {userCollectionGames: new ObjectId(removethis)}}, function(err){
+					if (err) console.log("contact addMsg error: " + err);
+					console.log('deleted!');
+					res.send('deleted!');
+					});
+						
+		});
+	},
+	removeGameFromWishList: function(req, res){
+		console.log('removeGameFromWishList called!');
+		var gameToDelete = req.body.gameid;
+		var removeFromUser = req.user._id;
+		Game.find({gameid: gameToDelete}, function(err, result){
+				var removethis = result[0]._id;
+				console.log('removethis: ', removethis);
+				console.log('removefromuser: ', removeFromUser);	
+				User.update(
+				{_id: removeFromUser}, 
+				{$pull: {userWishListGames: new ObjectId(removethis)}}, function(err){
+					if (err) console.log("serror: " + err);
+					console.log('deleted!');
+					res.send('deleted!');
+					});
+						
 		});
 	}
 

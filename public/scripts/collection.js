@@ -23,27 +23,29 @@ $(function(){
 
 		$('.tablebody').append(gameElement);
 		}
-		$('#datatable').DataTable({
-		"pageLength":20,
-		"lengthChange": false
-		});
+		var table = $('#datatable').DataTable();
+		// table.clear();
+
 		return responseData;
 		
 	});
+	console.log(userInfoString);
 
-	// //add a game to your collection
-	// $(document).on('click', '.toCollection', function(e){
-	// 	e.preventDefault();
-	// 	var addGameID = $(this).attr("data-id");
-	// 	var thisthis = $(this);
-	// 	console.log(addGameID);
-	// 	$.post('/api/addGameToCollection', {gameid: addGameID, isCIB: false}, function (responseData){
-	// 		console.log(responseData);
-	// 		thisthis.children().removeClass('fa-plus-circle');
-	// 		thisthis.children().addClass('fa-minus-circle');
+	//add a game to your collection
+	$(document).on('click', '.deleteFromCollection', function(e){
+		e.preventDefault();
+		var addGameID = $(this).attr("data-id");
+		var thisrow = $(this).closest('tr');
+		console.log(addGameID);
+		$.post('/api/removeGameFromCollection', {gameid: addGameID}, function (responseData){
+			console.log(responseData);
+			$('#datatable').DataTable().destroy();
+			thisrow.remove();
+			var table = $('#datatable').DataTable();
 
-	// 	});
-	// });
+
+		});
+	});
 
 	// 	//add a game to your wishlist
 	// $(document).on('click', '.toWants', function(e){

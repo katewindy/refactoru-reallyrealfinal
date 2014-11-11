@@ -54,6 +54,8 @@ app.get('/api/getGamesByConsole', apiController.getGamesByConsole);
 app.post('/api/addGametoCollection', apiController.addGametoCollection);
 app.post('/api/addGametoWantList', apiController.addGametoWantList);
 app.get('/api/getUserInfo', apiController.getUserInfo);
+app.post('/api/removeGameFromCollection', apiController.removeGameFromCollection);
+app.post('/api/removeGameFromWishList', apiController.removeGameFromWishList);
 
 // start server
 var server = app.listen(9661, function() {
