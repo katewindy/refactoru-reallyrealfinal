@@ -176,3 +176,8 @@ canvas {
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+/* styling for usernames on profile pages*/
+.thisusername {
+	font-weight: bolder;
+	border-bottom: 2px solid;
+}
