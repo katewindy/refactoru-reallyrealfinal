@@ -58,7 +58,7 @@ $(function(){
 		console.log(addGameID);
 		$.post('/api/addGameToCollection', {gameid: addGameID, isCIB: false}, function (responseData){
 			console.log(responseData);
-			// thisthis.children().css('color': 'red');
+			thisthis.children().css("color", "red");
 
 		});
 	});
@@ -71,7 +71,7 @@ $(function(){
 		console.log(addGameID);
 		$.post('/api/addGameToWantList', {gameid: addGameID, isCIB: false}, function (responseData){
 			console.log(responseData);
-			// thisthis.children('i').css("color":"red");
+			thisthis.children().css("color", "red");
 
 		});
 	});

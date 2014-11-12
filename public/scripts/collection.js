@@ -36,6 +36,7 @@ $(function(){
 		e.preventDefault();
 		var addGameID = $(this).attr("data-id");
 		var thisrow = $(this).closest('tr');
+		var thisthis = $(this);
 		console.log(addGameID);
 		$.post('/api/removeGameFromCollection', {gameid: addGameID}, function (responseData){
 			console.log(responseData);
@@ -55,7 +56,7 @@ $(function(){
 		console.log(addGameID);
 		$.post('/api/addGametoTradeList', {gameid: addGameID}, function (responseData){
 			console.log(responseData);
-			$('.fa-refresh').css("color", "red");
+			thisthis.children().css("color", "red");
 		});
 	});
 });
