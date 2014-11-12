@@ -10,7 +10,7 @@ var indexController = require('./controllers/index.js');
 var apiController = require('./controllers/apiController.js');
 var authenticationController = require('./controllers/authentication.js');
 
-mongoose.connect('mongodb://localhost/vgtrackr');
+mongoose.connect('mongodb://vgtrackrdb:sp00k13@dogen.mongohq.com:10059/app31544736');
 
 require('./models/seeds/seeddb.js');
 
