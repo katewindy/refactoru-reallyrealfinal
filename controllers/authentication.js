@@ -31,9 +31,14 @@ var authenticationController = {
 			username: req.param('username'),
 			password: req.param('password'),
 			email: req.param('email'),
-			userCollection: {
-				gamesInCollection: 0
-			}
+			hometown: req.param('hometown'),
+			firstname: req.param('firstname'),
+			lastname: req.param('lastname'),
+			favGame: req.param('favGame'),
+			favGenre: req.param('favGenre'),
+			steamid: req.param('steamid'),
+			psnid: req.param('psnid'),
+			xboxliveid: req.param('xboxliveid')
 		});
 		console.log(user, req.param('password'));
 		user.save(function(err, user){
@@ -43,7 +48,7 @@ var authenticationController = {
 					errorMessage = 'Sorry, this username or email already exists.  Try again, or, if you\'re sure this is you, maybe try logging in?';
 				}
 				req.flash('error', errorMessage);
-				return res.redirect('/auth/login');
+				return res.redirect('/signup');
 			}
 			performLogin(req, res, next, user);
 		});
