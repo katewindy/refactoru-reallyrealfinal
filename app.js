@@ -51,6 +51,7 @@ app.get('/wishlist', indexController.wishlist);
 app.get('/consoles/:consolename', indexController.viewConsole);
 app.get('/profiles/:username', indexController.showProfile);
 app.get('/wtfmachine', indexController.wtfmachine);
+app.get('/browseusers', indexController.browseusers);
 
 
 //api routes
@@ -62,6 +63,7 @@ app.get('/api/getUserInfo', apiController.getUserInfo);
 app.post('/api/removeGameFromCollection', apiController.removeGameFromCollection);
 app.post('/api/removeGameFromWantList', apiController.removeGameFromWantList);
 app.post('/api/removeGameFromTradeList', apiController.removeGameFromTradeList);
+app.get('/api/getAllUsers', apiController.getAllUsers);
 // start server
 var server = app.listen(9661, function() {
 	console.log('Express server listening on port ' + server.address().port);

@@ -42,6 +42,11 @@ var indexController = {
 	},
 	signup: function(req, res){
 		res.render('signup');
+	},
+	browseusers: function(req, res){
+		res.render('users', {
+			user: req.user
+		});
 	}
 };
 

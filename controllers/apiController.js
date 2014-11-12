@@ -10,6 +10,11 @@ var apiController = {
 			res.send(results);
 		});
 	},
+	getAllUsers: function(req, res){
+		User.find({}, function(err, results){
+			res.send(results);
+		});
+	},
 	getGamesByConsole: function(req, res){
 		var consoletype = req.query.consolename;
 		console.log('in getGamesByConsole: ', consoletype);
