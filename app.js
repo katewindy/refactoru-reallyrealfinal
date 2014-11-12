@@ -66,6 +66,7 @@ app.post('/api/removeGameFromWantList', apiController.removeGameFromWantList);
 app.post('/api/removeGameFromTradeList', apiController.removeGameFromTradeList);
 app.get('/api/getAllUsers', apiController.getAllUsers);
 // start server
-var server = app.listen(9661, function() {
+var port = process.env.PORT || 9661;
+var server = app.listen(port, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });

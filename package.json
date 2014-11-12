@@ -11,5 +11,8 @@
     "node-gyp": "^1.0.2",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0"
+  },
+  "scripts":{
+    "start": "node app.js"
   }
 }
