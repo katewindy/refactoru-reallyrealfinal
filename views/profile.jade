@@ -1,59 +1,82 @@
 extends layoutMain
 
 block content
-	.container-fluid.headercont
-		.jumbotext.jumbotext-alt
-			.container-fluid
-				.row
-					.col-md-2
-						br
-						img(src="http://placehold.it/150x150")
-					.col-md-10
-						h1
-							| #{user.username}
-							br
-							if (user.headline)
-								small #{user.headline}
-							else
-								small Your headline goes here.  Edit your profile to add one.
-						br
-						br
 	.padding20px
 	.container-fluid
 		.row
-			.col-xs-12
-				.titlestrike
-					h3.title Basic Info
-			.row
-				.col-xs-12
-					.col-md-3.col-sm-6.col-xs-12
-						.stattext
-							h4
-								| Total Games
-								br
-								| Owned
-							h1.totalgames 0
-					.col-md-3.col-sm-6.col-xs-12
-						.stattext
-							h4
-								| Total Value
-								br
-								| (Loose)
-							h1.looseval $23456
-					.col-md-3.col-sm-6.col-xs-12
-						.stattext
-							h4
-								| Total Value
-								br
-								| (CIB)
-							h1.cibval $23456
-					.col-md-3.col-sm-6.col-xs-12
-						.stattext
-							h4
-								| Average Value
-								br
-								| (Loose)
-							h1.looseavgval $25.00
-			.row
-				.col-xs-12
-				
+		.col-lg-2.col-md-3.col-sm-12.headercont
+			.profileinfo.jumbotext.jumbotext-alt
+				h3 #{user.username}
+				if user.headline != null
+					p Tagline goes here
+				p
+					strong Lives in:
+					| #{user.hometown}
+				p
+					strong Games Owned:
+					| #{user.userCollectionGames.length}
+				p
+					strong Games Wanted:
+					| #{user.userWishListGames.length}
+				if user.steamid != null
+				p
+					strong Steam ID:
+					| #{user.steamid}
+				if user.psnid != null
+				p
+					strong PSN ID: 
+					| #{user.psnid}
+				p
+					strong XBox Live ID:
+					| #{user.xboxliveid}
+		.col-lg-10.col-md-9.col-sm-12
+			.titlestrike
+				h3.title Collection
+			.tableholder
+				table#datatable1.display.row-border.hover.compact.order-column.nowraps
+					thead
+						tr
+							th Game Title
+							th Console
+							th Genre
+							th Loose Price
+							th CIB Price
+					tbody.collection.tablebody
+			.padding20px
+			.titlestrike
+				h3.title Trade List
+			.tableholder
+				table#datatable2.display.row-border.hover.compact.order-column.nowraps
+					thead
+						tr
+							th Game Title
+							th Console
+							th Genre
+							th Loose Price
+							th CIB Price
+					tbody.tradelist.tablebody
+			.padding20px
+			.titlestrike
+				h3.title Wish List
+			.tableholder
+				table#datatable3.display.row-border.hover.compact.order-column.nowraps
+					thead
+						tr
+							th Game Title
+							th Console
+							th Genre
+							th Loose Price
+							th CIB Price
+					tbody.wishlist.tablebody
+			.padding20px
+	//
+		Here all the scripts be 
+	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+	script(src='/bootstrap/js/bootstrap.min.js')
+	//
+		include datatables
+	script(type='text/javascript').
+		var user =!{JSON.stringify(user)} 
+	script(src='http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js')
+	script(src='/scripts/profile.js')
+	script(src='/main.js')
