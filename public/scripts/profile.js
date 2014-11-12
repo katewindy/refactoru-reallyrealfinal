@@ -8,9 +8,15 @@ $(window).load(function() {
 });
 
 $(function(){
+	var thisUser = $('.thisusername').text();
 	//populate the table with games
-	var userInfoString = $.get('/api/getUserInfo', {_id: user._id}, function(responseData){
-
+	var userInfoString = $.get('/api/getUserInfoByUserName', {username: thisUser}, function(responseData){
+		$('.hometown').text(responseData.hometown);
+		$('.gamesowned').text(responseData.userCollectionGames.length);
+		$('.gameswanted').text(responseData.userWishListGames.length);
+		$('.steamid').text(responseData.steamid);
+		$('.psnid').text(responseData.psnid);
+		$('.xboxliveid').text(responseData.xboxliveid);
 		for (var i = 0; i < responseData.userCollectionGames.length; i ++) {
 			var gameElement = renderGameList(responseData.userCollectionGames[i]);
 

@@ -18,8 +18,11 @@ var indexController = {
 		});
 	},
 	showProfile: function(req, res){
+		var thisuser = req.params.username;
+		console.log(thisuser);
 		res.render('profile', {
-			user: req.user
+			user: req.user,
+			thisuser: thisuser
 		});
 	},
 	faq: function(req, res){

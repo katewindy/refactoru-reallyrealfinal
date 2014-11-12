@@ -60,6 +60,7 @@ app.post('/api/addGametoCollection', apiController.addGametoCollection);
 app.post('/api/addGametoWantList', apiController.addGametoWantList);
 app.post('/api/addGametoTradeList', apiController.addGametoTradeList);
 app.get('/api/getUserInfo', apiController.getUserInfo);
+app.get('/api/getUserInfoByUserName', apiController.getUserInfoByUserName);
 app.post('/api/removeGameFromCollection', apiController.removeGameFromCollection);
 app.post('/api/removeGameFromWantList', apiController.removeGameFromWantList);
 app.post('/api/removeGameFromTradeList', apiController.removeGameFromTradeList);

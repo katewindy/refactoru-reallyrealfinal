@@ -105,6 +105,15 @@ var apiController = {
 			res.send(user);
 		});
 	},
+	getUserInfoByUserName: function(req, res){
+		console.log('getUserInfoByUserName called!');
+		User.findOne({username: req.query.username})
+			.populate('userCollectionGames', {}, 'Game').populate('userWishListGames',{}, 'Game').populate('userTradeListGames', {}, 'Game').exec(function(err, user){
+			if (err) return handleError(err);
+			console.log('user.userCollection(inside apiController): ', user.userCollectionGames);
+			res.send(user);
+		});
+	},
 	removeGameFromCollection: function(req, res){
 		console.log('removeGameFromCollection called!');
 		var gameToDelete = req.body.gameid;

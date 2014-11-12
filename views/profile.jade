@@ -6,29 +6,29 @@ block content
 		.row
 		.col-lg-2.col-md-3.col-sm-12.headercont
 			.profileinfo.jumbotext.jumbotext-alt
-				h3 #{user.username}
+				h3 <span class="thisusername">#{thisuser}</span>
 				if user.headline != null
 					p Tagline goes here
 				p
 					strong Lives in: 
-					| #{user.hometown}
+					| <span class="hometown"></span>
 				p
 					strong Games Owned: 
-					| #{user.userCollectionGames.length}
+					| <span class="gamesowned"></span>
 				p
 					strong Games Wanted: 
-					| #{user.userWishListGames.length}
+					| <span class="gameswanted"></span>
 				if user.steamid != null
 				p
 					strong Steam ID: 
-					| #{user.steamid}
+					| <span class="steamid"></span>
 				if user.psnid != null
 				p
 					strong PSN ID: 
-					| #{user.psnid}
+					| <span class="psnid"></span>
 				p
 					strong XBox Live ID: 
-					| #{user.xboxliveid}
+					| <span class="xboxliveid"></span>
 		.col-lg-10.col-md-9.col-sm-12
 			.titlestrike
 				h3.title Collection
