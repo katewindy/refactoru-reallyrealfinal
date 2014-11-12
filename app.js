@@ -45,6 +45,7 @@ app.use(passportConfig.ensureAuthenticated);
 
 app.get('/', indexController.index);
 app.get('/collection', indexController.collection);
+app.get('/tradelist', indexController.tradelist);
 app.get('/consoles/:consolename', indexController.viewConsole);
 app.get('/profiles/:username', indexController.showProfile);
 app.get('/wtfmachine', indexController.wtfmachine);
@@ -53,10 +54,11 @@ app.get('/wtfmachine', indexController.wtfmachine);
 app.get('/api/getGamesByConsole', apiController.getGamesByConsole);
 app.post('/api/addGametoCollection', apiController.addGametoCollection);
 app.post('/api/addGametoWantList', apiController.addGametoWantList);
+app.post('/api/addGametoTradeList', apiController.addGametoTradeList);
 app.get('/api/getUserInfo', apiController.getUserInfo);
 app.post('/api/removeGameFromCollection', apiController.removeGameFromCollection);
 app.post('/api/removeGameFromWishList', apiController.removeGameFromWishList);
-
+app.post('/api/removeGameFromTradeList', apiController.removeGameFromTradeList);
 // start server
 var server = app.listen(9661, function() {
 	console.log('Express server listening on port ' + server.address().port);

@@ -58,13 +58,12 @@ $(function(){
 		console.log(addGameID);
 		$.post('/api/addGameToCollection', {gameid: addGameID, isCIB: false}, function (responseData){
 			console.log(responseData);
-			thisthis.children().removeClass('fa-plus-circle');
-			thisthis.children().addClass('fa-minus-circle');
+			// thisthis.children().css('color': 'red');
 
 		});
 	});
 
-		//add a game to your wishlist
+	//add a game to your wishlist
 	$(document).on('click', '.toWants', function(e){
 		e.preventDefault();
 		var addGameID = $(this).attr("data-id");
@@ -72,8 +71,7 @@ $(function(){
 		console.log(addGameID);
 		$.post('/api/addGameToWantList', {gameid: addGameID, isCIB: false}, function (responseData){
 			console.log(responseData);
-			thisthis.children().removeClass('fa-magic');
-			thisthis.children().addClass('fa-star').css('color' , 'yellow');
+			// thisthis.children('i').css("color":"red");
 
 		});
 	});

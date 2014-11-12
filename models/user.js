@@ -31,6 +31,7 @@ var userSchema = mongoose.Schema({
 	nintendoid: String,
 	kongregateid: String,
 	userCollectionGames: [{type: mongoose.Schema.ObjectId, ref: 'Game'}],
+	userTradeListGames: [{type: mongoose.Schema.ObjectId, ref: 'Game'}],
 	userCollection: [{
 			gameid: {type: mongoose.Schema.ObjectId, ref:'Game'},
 			isCIB: Boolean,

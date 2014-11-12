@@ -1,14 +1,5 @@
-
-
-
 var indexController = {
 	index: function(req, res) {
-		// User.findOne({_id: req.user.id})
-		// .populate('userCollection', null, 'game')
-		// .exec(function(err, doc){
-		// 	console.log(err);
-  //       	console.log(doc);
-		// });
 		res.render('index', {
 			user: req.user
 		});
@@ -36,6 +27,16 @@ var indexController = {
 	},
 	wtfmachine: function(req, res){
 		res.render('wtfmachine', {
+			user: req.user
+		});
+	},
+	tradelist: function(req, res){
+		res.render('tradelist', {
+			user: req.user
+		});
+	},
+	wantlist: function(req, res){
+		res.render('wantlist', {
 			user: req.user
 		});
 	}

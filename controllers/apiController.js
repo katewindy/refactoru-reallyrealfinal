@@ -31,11 +31,11 @@ var apiController = {
 		var gameIsCIB = req.body.isCIB;
 		Game.find({gameid: addGameId}, function(err, result){
 			var pushthis = {gameid: result[0]._id, isCIB: gameIsCIB};
-			User.update(
-				{_id: addToUser}, 
-				{$push: {userCollection: pushthis}}, function(err){
-					if (err) console.log("contact addMsg error: " + err);
-					});
+			// User.update(
+			// 	{_id: addToUser}, 
+			// 	{$push: {userCollection: pushthis}}, function(err){
+			// 		if (err) console.log("contact addMsg error: " + err);
+			// 		});
 			User.update(
 				{_id: addToUser}, 
 				{$push: {userCollectionGames: result[0]._id}}, function(err){
@@ -54,11 +54,11 @@ var apiController = {
 		console.log('addToUser :', addToUser);
 		Game.find({gameid: addGameId}, function(err, result){
 			var pushthis = {gameid: result[0]._id};
-			User.update(
-				{_id: addToUser}, 
-				{$push: {userWishList: pushthis}}, function(err){
-					if (err) console.log("contact addMsg error: " + err);
-				});
+			// User.update(
+			// 	{_id: addToUser}, 
+			// 	{$push: {userWishList: pushthis}}, function(err){
+			// 		if (err) console.log("contact addMsg error: " + err);
+			// 	});
 			User.update(
 				{_id: addToUser}, 
 				{$push: {userWishListGames: result[0]._id}}, function(err){
@@ -69,10 +69,32 @@ var apiController = {
 				});	
 		});	
 	},
+	addGametoTradeList: function(req, res){
+		var addGameId = req.body.gameid;
+		var addToUser = req.user._id;
+		console.log('addGameId: ', addGameId);
+		console.log('addToUser :', addToUser);
+		Game.find({gameid: addGameId}, function(err, result){
+			var pushthis = {gameid: result[0]._id};
+			// User.update(
+			// 	{_id: addToUser}, 
+			// 	{$push: {userWishList: pushthis}}, function(err){
+			// 		if (err) console.log("contact addMsg error: " + err);
+			// 	});
+			User.update(
+				{_id: addToUser}, 
+				{$push: {userTradeListGames: result[0]._id}}, function(err){
+					if (err) console.log("contact addMsg error: " + err);
+
+					console.log('game added!');
+					res.send('success!');
+				});	
+		});	
+	},
 	getUserInfo: function(req, res){
 		console.log('getUserInfo called!');
 		User.findOne({_id:req.user._id})
-			.populate('userCollectionGames', {}, 'Game').populate('userWishListGames',{}, 'Game').exec(function(err, user){
+			.populate('userCollectionGames', {}, 'Game').populate('userWishListGames',{}, 'Game').populate('userTradeListGames', {}, 'Game').exec(function(err, user){
 			if (err) return handleError(err);
 			console.log('user.userCollection(inside apiController): ', user.userCollectionGames);
 			res.send(user);
@@ -89,7 +111,7 @@ var apiController = {
 				User.update(
 				{_id: removeFromUser}, 
 				{$pull: {userCollectionGames: new ObjectId(removethis)}}, function(err){
-					if (err) console.log("contact addMsg error: " + err);
+					if (err) console.log("error: " + err);
 					console.log('deleted!');
 					res.send('deleted!');
 					});
@@ -107,7 +129,25 @@ var apiController = {
 				User.update(
 				{_id: removeFromUser}, 
 				{$pull: {userWishListGames: new ObjectId(removethis)}}, function(err){
-					if (err) console.log("serror: " + err);
+					if (err) console.log("error: " + err);
+					console.log('deleted!');
+					res.send('deleted!');
+					});
+						
+		});
+	},
+	removeGameFromTradeList: function(req, res){
+		console.log('removeGameFromTradeList called!');
+		var gameToDelete = req.body.gameid;
+		var removeFromUser = req.user._id;
+		Game.find({gameid: gameToDelete}, function(err, result){
+				var removethis = result[0]._id;
+				console.log('removethis: ', removethis);
+				console.log('removefromuser: ', removeFromUser);	
+				User.update(
+				{_id: removeFromUser}, 
+				{$pull: {userTradeListGames: new ObjectId(removethis)}}, function(err){
+					if (err) console.log("error: " + err);
 					console.log('deleted!');
 					res.send('deleted!');
 					});

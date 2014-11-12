@@ -31,7 +31,7 @@ $(function(){
 	});
 	console.log(userInfoString);
 
-	//add a game to your collection
+	//delete a game from your collection
 	$(document).on('click', '.deleteFromCollection', function(e){
 		e.preventDefault();
 		var addGameID = $(this).attr("data-id");
@@ -47,19 +47,17 @@ $(function(){
 		});
 	});
 
-	// 	//add a game to your wishlist
-	// $(document).on('click', '.toWants', function(e){
-	// 	e.preventDefault();
-	// 	var addGameID = $(this).attr("data-id");
-	// 	var thisthis = $(this);
-	// 	console.log(addGameID);
-	// 	$.post('/api/addGameToWantList', {gameid: addGameID, isCIB: false}, function (responseData){
-	// 		console.log(responseData);
-	// 		thisthis.children().removeClass('fa-magic');
-	// 		thisthis.children().addClass('fa-star').css('color' , 'yellow');
-
-	// 	});
-	// });
+	//add a game to your trade
+	$(document).on('click', '.toTrade', function(e){
+		e.preventDefault();
+		var addGameID = $(this).attr("data-id");
+		var thisthis = $(this);
+		console.log(addGameID);
+		$.post('/api/addGametoTradeList', {gameid: addGameID}, function (responseData){
+			console.log(responseData);
+			$('.fa-refresh').css("color", "red");
+		});
+	});
 });
 
 var renderGameList = function(gameData){
