@@ -35,8 +35,8 @@ var indexController = {
 			user: req.user
 		});
 	},
-	wantlist: function(req, res){
-		res.render('wantlist', {
+	wishlist: function(req, res){
+		res.render('wishlist', {
 			user: req.user
 		});
 	}

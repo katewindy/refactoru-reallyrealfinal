@@ -118,7 +118,7 @@ var apiController = {
 						
 		});
 	},
-	removeGameFromWishList: function(req, res){
+	removeGameFromWantList: function(req, res){
 		console.log('removeGameFromWishList called!');
 		var gameToDelete = req.body.gameid;
 		var removeFromUser = req.user._id;

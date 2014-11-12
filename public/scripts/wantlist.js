@@ -18,8 +18,8 @@ $(function(){
 	//populate the table with games
 	var userInfoString = $.get('/api/getUserInfo', {_id: user._id}, function(responseData){
 
-		for (var i = 0; i < responseData.userTradeListGames.length; i ++) {
-		var gameElement = renderGameList(responseData.userTradeListGames[i]);
+		for (var i = 0; i < responseData.userWishListGames.length; i ++) {
+		var gameElement = renderGameList(responseData.userWishListGames[i]);
 
 		$('.tablebody').append(gameElement);
 		}
@@ -32,12 +32,12 @@ $(function(){
 	console.log(userInfoString);
 
 	//delete a game from your trade list
-	$(document).on('click', '.deleteFromTradeList', function(e){
+	$(document).on('click', '.deleteFromWantList', function(e){
 		e.preventDefault();
 		var addGameID = $(this).attr("data-id");
 		var thisrow = $(this).closest('tr');
 		console.log(addGameID);
-		$.post('/api/removeGameFromTradeList', {gameid: addGameID}, function (responseData){
+		$.post('/api/removeGameFromWantList', {gameid: addGameID}, function (responseData){
 			console.log(responseData);
 			$('#datatable').DataTable().destroy();
 			thisrow.remove();
@@ -63,6 +63,6 @@ var renderGameList = function(gameData){
 	el.append('<td>'+ thisGame.genre + '</td>');
 	el.append('<td>$' + Number(thisGame.looseprice).toFixed(2) + '</td>');
 	el.append('<td>$' + Number(thisGame.cibprice).toFixed(2) + '</td>');
-	el.append('<td class="actions"><a href="#"" class="deleteFromTradeList" data-id="' + thisGame.gameid + '"> Remove Game </a></td>');
+	el.append('<td class="actions"><a href="#"" class="deleteFromWantList" data-id="' + thisGame.gameid + '"> Remove Game </a></td>');
 	return el;
 };
