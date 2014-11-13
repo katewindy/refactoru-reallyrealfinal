@@ -10,8 +10,12 @@ var indexController = require('./controllers/index.js');
 var apiController = require('./controllers/apiController.js');
 var authenticationController = require('./controllers/authentication.js');
 
-mongoose.connect('mongodb://vgtrackrdb:sp00k13@dogen.mongohq.com:10059/app31544736');
+// // below code is for heroku
+// mongoose.connect('mongodb://vgtrackrdb:<password>@dogen.mongohq.com:10059/app31544736');
 
+// connect to local db
+mongoose.connect('mongodb://localhost/vgtrackr');
+//seed db if necessary
 require('./models/seeds/seeddb.js');
 
 var app = express();
@@ -27,6 +31,8 @@ app.use(session({secret: 'secret'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// routes for pages viewable sans authentication
 app.get('/aboutVGTrackr', indexController.faq);
 app.get('/signup', indexController.signup);
 // Our get request for viewing the login page
@@ -43,7 +49,7 @@ app.get('/auth/logout', authenticationController.logout);
 
 app.use(passportConfig.ensureAuthenticated);
 
-
+// routes only available after authentication
 app.get('/', indexController.index);
 app.get('/collection', indexController.collection);
 app.get('/tradelist', indexController.tradelist);

@@ -22,6 +22,7 @@ var indexController = {
 		console.log(thisuser);
 		res.render('profile', {
 			user: req.user,
+			// the requested user profile's username
 			thisuser: thisuser
 		});
 	},

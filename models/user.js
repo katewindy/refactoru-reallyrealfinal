@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var Game = require('../models/game1.js');
 
+// note that all of these aren't being used yet, I just have a lot of ideas to add!
 var userSchema = mongoose.Schema({
 	username:{
 		type: String,
@@ -30,6 +31,7 @@ var userSchema = mongoose.Schema({
 	xboxliveid: String,
 	nintendoid: String,
 	kongregateid: String,
+	// currently where user game collection is
 	userCollectionGames: [{type: mongoose.Schema.ObjectId, ref: 'Game'}],
 	userTradeListGames: [{type: mongoose.Schema.ObjectId, ref: 'Game'}],
 	userCollection: [{
@@ -55,6 +57,7 @@ var userSchema = mongoose.Schema({
 	isWishListPublic: Boolean
 });
 
+// hash password on user save if the password is new or has been modified
 userSchema.pre('save', function(next){
 	console.log('testing!');
 	if(!this.isModified('password')) return next();

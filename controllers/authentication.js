@@ -1,3 +1,5 @@
+// DON'T TOUCH THIS EITHER (except for where noted)
+
 var passport = require('passport');
 
 var User = require('../models/user');
@@ -28,6 +30,7 @@ var authenticationController = {
 	},
 	processSignup: function(req, res, next){
 		var user = new User({
+			// only mess with this if you're adding fields to the sign up page!!!
 			username: req.param('username'),
 			password: req.param('password'),
 			email: req.param('email'),
